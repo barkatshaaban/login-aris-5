@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ARIS 3.5</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .logo {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #42a5f5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #1e88e5;
+        }
+        .signup {
+            background-color: #42a5f5;
+        }
+        .signup:hover {
+            background-color: #1e88e5;
+        }
+        .footer-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+        h2 {
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="logo.png" alt="UDSM Logo" class="logo">
+            <h2>Login to your ARIS 3.5 account</h2>
+            <p>Your credentials</p>
+            <input type="text" id="username" placeholder="Username/Email" class="input-field">
+            <input type="password" id="password" placeholder="Password" class="input-field">
+            <p id="error" class="error-message">Please fill in all fields</p>
+            <a href="#" class="forgot-password">Forgot password?</a>
+            <button onclick="login()" class="btn">Login</button>
+            <p>Don't have an account?</p>
+            <button onclick="showSignUp()" class="btn signup">Sign Up</button>
+            <p class="footer-text">If you are confirming, you should read our <a href="#">Terms & Conditions</a> and <a href="#">Cookie Policy</a>.</p>
+            <p class="footer-text">@2025 ARIS UDSM login. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let error = document.getElementById('error');
+
+            if (username === "" || password === "") {
+                error.style.display = "block";
+            } else {
+                error.style.display = "none";
+                alert('Login successful');
+            }
+        }
+
+        function showSignUp() {
+            let role = prompt("Are you a Student or a Lecturer? (Type 'Student' or 'Lecturer')");
+            if (role.toLowerCase() === "student" || role.toLowerCase() === "lecturer") {
+                let firstName = prompt("Enter your First Name:");
+                let middleName = prompt("Enter your Middle Name:");
+                let lastName = prompt("Enter your Last Name:");
+                let password = prompt("Create a Password (Must start with an uppercase letter):");
+
+                if (firstName && middleName && lastName && /^[A-Z].*/.test(password)) {
+                    alert("Sign up successful!");
+                } else {
+                    alert("Error: Password must start with an uppercase letter!");
+                }
+            } else {
+                alert("Invalid role selection!");
+            }
+        }
+    </script>
+</body>
+</html>
